@@ -40,7 +40,8 @@ if (isset($_POST['launch'])) {
 	<meta property="og:url" content="https://keenthemes.com/metronic" />
 	<meta property="og:site_name" content="Keenthemes | Metronic" />
 	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-	<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+	<!-- <link rel="shortcut icon" href="assets/media/logos/favicon.ico" /> -->
+	<link rel="icon" href="assets/img/favicon.ico">
 	<!--begin::Fonts-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 	<!--end::Fonts-->
@@ -151,20 +152,20 @@ if (isset($_POST['launch'])) {
 													</div>
 													<div class="row g-9 mb-8">
 														<div class="col-md-6 fv-row">
-    <label class="required fs-6 fw-bold mb-2">Banner Image</label>
-    <input type="file" class="form-control" name="service_banner_img">
-</div>
+															<label class="required fs-6 fw-bold mb-2">Banner Image</label>
+															<input type="file" class="form-control" name="service_banner_img">
+														</div>
 
 														<div class="col-md-6 fv-row">
-    <label class="required fs-6 fw-bold mb-2">Bottom Image</label>
-    <div class="position-relative d-flex align-items-center">
-        <span class="svg-icon svg-icon-2 position-absolute mx-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            </svg>
-        </span>
-        <input type="file" class="form-control form-control-solid ps-12" name="service_bottom_img">
-    </div>
-</div>
+															<label class="required fs-6 fw-bold mb-2">Bottom Image</label>
+															<div class="position-relative d-flex align-items-center">
+																<span class="svg-icon svg-icon-2 position-absolute mx-4">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																	</svg>
+																</span>
+																<input type="file" class="form-control form-control-solid ps-12" name="service_bottom_img">
+															</div>
+														</div>
 
 														<!--end::Col-->
 													</div>
@@ -180,9 +181,9 @@ if (isset($_POST['launch'])) {
 													</div>
 													<!--begin::Input group-->
 													<div class="d-flex flex-column mb-8">
-        <label class="fs-6 fw-bold mb-2">Service Description</label>
-        <textarea class="form-control form-control-solid" id="editor" name="service_desc" placeholder="Type Service Description"></textarea>
-    </div>
+														<label class="fs-6 fw-bold mb-2">Service Description</label>
+														<textarea class="form-control form-control-solid" id="editor" name="service_desc" placeholder="Type Service Description"></textarea>
+													</div>
 													<div class="d-flex flex-stack mb-8">
 														<div class="me-5">
 															<label class="fs-6 fw-bold">Status</label>
@@ -191,20 +192,20 @@ if (isset($_POST['launch'])) {
 														<!--end::Label-->
 														<!--begin::Switch-->
 														<label class="form-check form-switch form-check-custom form-check-solid">
-															<input class="form-check-input"  name="is_active" type="checkbox" value="1" checked="checked" />
+															<input class="form-check-input" name="is_active" type="checkbox" value="1" checked="checked" />
 															<span class="form-check-label fw-bold text-muted">Active</span>
 														</label>
 														<!--end::Switch-->
 													</div>
 													<!--end::Input group-->
 													<!--begin::Input group-->
-													
+
 													<!--end::Input group-->
 													<!--begin::Actions-->
 													<div class="text-center">
 														<button type="reset" id="kt_modal_new_target_cancel" class="btn btn-light me-3">Cancel</button>
 														<button type="submit" name="launch" id="kt_modal" class="btn btn-primary">
-															<span class="indicator-label">Launch</span>
+															<span class="indicator-label">Add Service</span>
 															</span>
 														</button>
 													</div>
@@ -236,7 +237,7 @@ if (isset($_POST['launch'])) {
 							</div>
 							<!--end::Copyright-->
 							<!--begin::Menu-->
-							<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">	
+							<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
 								<li class="menu-item">
 									<a href="logout.php" target="_blank" class="menu-link px-2">Logout</a>
 								</li>
@@ -657,7 +658,7 @@ if (isset($_POST['launch'])) {
 											</div>
 											<!--end::Image-->
 											<!--begin::Link-->
-											
+
 											<!--end::Link-->
 										</div>
 										<!--end::Item-->
@@ -669,7 +670,7 @@ if (isset($_POST['launch'])) {
 											</div>
 											<!--end::Image-->
 											<!--begin::Link-->
-											
+
 											<!--end::Link-->
 										</div>
 										<!--end::Item-->
@@ -3525,15 +3526,15 @@ if (isset($_POST['launch'])) {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="assets/js/custom.js"></script>
 	<script>
-                        ClassicEditor
-                                .create( document.querySelector( '#editor' ) )
-                                .then( editor => {
-                                        console.log( editor );
-                                } )
-                                .catch( error => {
-                                        console.error( error );
-                                } );
-                </script>
+		ClassicEditor
+			.create(document.querySelector('#editor'))
+			.then(editor => {
+				console.log(editor);
+			})
+			.catch(error => {
+				console.error(error);
+			});
+	</script>
 </body>
 <!--end::Body-->
 

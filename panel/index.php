@@ -41,12 +41,12 @@ if (isset($_POST['login'])) {
 		<div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url('assets/media/illustrations/sketchy-1/14.png')">
 			<div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
 				<a href="index.php" class="mb-12">
-					<img alt="Logo" src="assets/media/logos/logo-1.svg" class="h-40px" />
+					<img alt="Logo" src="assets/media/logos/logo.png" style="height: auto !important; width:320px;" class="h-40px" />
 				</a>
 				<div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
 					<form action="index.php" class="form w-100" novalidate="novalidate" method="post">
 						<div class="text-center mb-10">
-							<h1 class="text-dark mb-3">Sign In to Dinesh Arora</h1>
+							<h1 class="text-dark mb-3">Sign In to Dev Daadu</h1>
 						</div>
 
 						<div class="fv-row mb-10">

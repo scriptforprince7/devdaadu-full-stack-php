@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 date_default_timezone_set('Asia/Kolkata');
 define('BASE_URL', 'http://localhost/DevDaadu/panel/');
-define('BASE_URL_IMG', 'http://localhost/DevDaadu/assets/img');
+define('BASE_URL_IMG', 'http://localhost/DevDaadu/panel/assets/img/');
 $conn=mysqli_connect('localhost','root','','dinesh');
 if(!$conn)
 {

@@ -189,40 +189,46 @@ mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tbl_service WHERE service_
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 <div class="swiper-slide">
-                    <img src="assets/img/client/themeforest.png" alt="themeforest-logo">
+                    <img src="assets/img/client/client-01.jpg" alt="themeforest-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/codecanyon.png" alt="codecanyon-logo">
+                    <img src="assets/img/client/client-02.png" alt="codecanyon-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/videohive.png" alt="videohibe-logo">
+                    <img src="assets/img/client/client-03.jpg" alt="videohibe-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/graphicriver.png" alt="graphicriver-logo">
+                    <img src="assets/img/client/client-04.png" alt="graphicriver-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/themeforest.png" alt="themeforest-logo">
+                    <img src="assets/img/client/client-05.png" alt="themeforest-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/codecanyon.png" alt="codecanyon-logo">
+                    <img src="assets/img/client/client-06.jpg" alt="codecanyon-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/videohive.png" alt="videohibe-logo">
+                    <img src="assets/img/client/client-07.jpg" alt="videohibe-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/graphicriver.png" alt="graphicriver-logo">
+                    <img src="assets/img/client/client-08.jpg" alt="graphicriver-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/themeforest.png" alt="themeforest-logo">
+                    <img src="assets/img/client/client-09.jpg" alt="themeforest-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/codecanyon.png" alt="codecanyon-logo">
+                    <img src="assets/img/client/client-10.jpg" alt="codecanyon-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/videohive.png" alt="videohibe-logo">
+                    <img src="assets/img/client/client-11.png" alt="videohibe-logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="assets/img/client/graphicriver.png" alt="graphicriver-logo">
+                    <img src="assets/img/client/client-12.gif" alt="graphicriver-logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="assets/img/client/client-13.gif" alt="graphicriver-logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="assets/img/client/client-14.gif" alt="graphicriver-logo">
                 </div>
             </div>
         </div>
