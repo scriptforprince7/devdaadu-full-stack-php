@@ -126,7 +126,7 @@
 					</span>
 					<div class="menu-sub menu-sub-accordion menu-active-bg">
 						<div class="menu-item">
-							<a class="menu-link" href="manage-products.php">
+							<a class="menu-link" href="manage-home-slider.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -134,7 +134,7 @@
 							</a>
 						</div>
 						<div class="menu-item">
-							<a class="menu-link" href="add-products.php">
+							<a class="menu-link" href="add-home-slider.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -162,7 +162,7 @@
 					</span>
 					<div class="menu-sub menu-sub-accordion menu-active-bg">
 						<div class="menu-item">
-							<a class="menu-link" href="manage-products.php">
+							<a class="menu-link" href="manage-about.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -170,7 +170,7 @@
 							</a>
 						</div>
 						<div class="menu-item">
-							<a class="menu-link" href="add-products.php">
+							<a class="menu-link" href="add-about.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -269,7 +269,7 @@
 					</span>
 					<div class="menu-sub menu-sub-accordion menu-active-bg">
 						<div class="menu-item">
-							<a class="menu-link" href="manage-products.php">
+							<a class="menu-link" href="manage-testimonials.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -277,7 +277,7 @@
 							</a>
 						</div>
 						<div class="menu-item">
-							<a class="menu-link" href="add-products.php">
+							<a class="menu-link" href="add-testimonials.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -305,7 +305,7 @@
 					</span>
 					<div class="menu-sub menu-sub-accordion menu-active-bg">
 						<div class="menu-item">
-							<a class="menu-link" href="manage-products.php">
+							<a class="menu-link" href="manage-faq.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -313,7 +313,7 @@
 							</a>
 						</div>
 						<div class="menu-item">
-							<a class="menu-link" href="add-products.php">
+							<a class="menu-link" href="add-faq.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -340,7 +340,7 @@
 					</span>
 					<div class="menu-sub menu-sub-accordion menu-active-bg">
 						<div class="menu-item">
-							<a class="menu-link" href="manage-products.php">
+							<a class="menu-link" href="manage-contact.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -348,7 +348,7 @@
 							</a>
 						</div>
 						<div class="menu-item">
-							<a class="menu-link" href="add-products.php">
+							<a class="menu-link" href="add-contact.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -375,7 +375,7 @@
 					</span>
 					<div class="menu-sub menu-sub-accordion menu-active-bg">
 						<div class="menu-item">
-							<a class="menu-link" href="manage-products.php">
+							<a class="menu-link" href="manage-social-media.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
@@ -383,7 +383,7 @@
 							</a>
 						</div>
 						<div class="menu-item">
-							<a class="menu-link" href="add-products.php">
+							<a class="menu-link" href="add-social-media.php">
 								<span class="menu-bullet">
 									<span class="bullet bullet-dot"></span>
 								</span>
