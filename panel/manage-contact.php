@@ -3,15 +3,16 @@ include 'db/config.php';
 include('lock2.php');
 if (isset($_GET['del'])) {
 	$t_id = $_GET['del'];
-	$query = mysqli_query($conn, "delete from tbl_service where service_id=$t_id");
+	$query = mysqli_query($conn, "delete from tbl_contact where contact_id=$t_id");
 	if ($query) {
-		header('Location:' . BASE_URL . 'manage-services.php');
+		header('Location:' . BASE_URL . 'manage-contact.php');
 	}
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Metronic</title>
 	<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
@@ -70,9 +71,9 @@ if (isset($_GET['del'])) {
 									<div class="card-toolbar">
 										<!--begin::Toolbar-->
 										<div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
-									
+
 											<!--begin::Add customer-->
-										<a href="add-services.php"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add New Service</button></a>	
+											<a href="add-contact.php"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add Contact Entry</button></a>
 											<!--end::Add customer-->
 										</div>
 										<!--end::Toolbar-->
@@ -97,21 +98,22 @@ if (isset($_GET['del'])) {
 											<!--begin::Table row-->
 											<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 												<th class="min-w-125px">ID</th>
-												<th class="min-w-125px">Service Name</th>
-												<th class="min-w-125px">Service Description</th>
-												<th class="min-w-125px">Banner Image</th>
-												<th class="min-w-125px">Middle Image</th>
-												<th class="min-w-125px">URL Slug</th>
+												<th class="min-w-125px">Contact Number</th>
+												<th class="min-w-125px">Contact Address</th>
+												<th class="min-w-125px">Email ID </th>
+												<th class="min-w-125px">Opening Hour</th>
 												<th class="min-w-125px">Status</th>
 												<th class="text-end min-w-70px">Actions</th>
 											</tr>
 											<!--end::Table row-->
 										</thead>
 										<!--end::Table head-->
+														<!-- is_active	 -->
+
 										<!--begin::Table body-->
 										<tbody class="fw-bold text-gray-600">
 											<?php
-											$query = mysqli_query($conn, "select * from tbl_service order by service_id asc");
+											$query = mysqli_query($conn, "select * from tbl_contact order by contact_id asc");
 											$totl = mysqli_num_rows($query);
 											if ($totl > 0) {
 												$id = 1;
@@ -119,35 +121,27 @@ if (isset($_GET['del'])) {
 											?>
 													<tr>
 														<td>
-															<?= $row['service_id'] ?>
+															<?= $row['contact_id'] ?>
 														</td>
 
 														<td>
-															<?= $row['service_name'] ?>
+															<?= $row['contact_number'] ?>
 														</td>
 
 														<td>
-															<?= $row['service_desc'] ?>
+															<?= $row['contact_address'] ?>
+														</td>
+														<td>
+															<?= $row['contact_email'] ?>
+														</td>
+														<td>
+															<?= $row['contact_openinghour'] ?>
 														</td>
 
 														<td>
-														<img src="<?= BASE_URL . 'assets/img/' . $row['service_banner_img'] . '' ?>" width="100">
-														</td>
-
-														<td>
-														<img src="<?= BASE_URL . 'assets/img/' . $row['service_bottom_img'] . '' ?>" width="100">
-														</td>
-
-														<td>
-															<?= $row['service_slug'] ?>
-														</td>
-
-														<td>
-														<span class="label label-lg font-weight-bold label-inline" style="color: <?= ($row['is_active'] == 1 ? 'green' : 'red') ?>">
-    <?= ($row['is_active'] == 1 ? 'Active' : 'Inactive') ?>
-</span>
-
-
+															<span class="label label-lg font-weight-bold label-inline" style="color: <?= ($row['is_active'] == 1 ? 'green' : 'red') ?>">
+																<?= ($row['is_active'] == 1 ? 'Active' : 'Inactive') ?>
+															</span>
 														</td>
 
 														<!--end::Email=-->
@@ -166,12 +160,12 @@ if (isset($_GET['del'])) {
 															<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																<!--begin::Menu item-->
 																<div class="menu-item px-3">
-																	<a href="<?= BASE_URL ?>edit-services.php?edit_rec=<?= $row['service_id'] ?>" class="menu-link px-3"> Edit </a>
+																	<a href="<?= BASE_URL ?>edit-contact.php?edit_rec=<?= $row['contact_id'] ?>" class="menu-link px-3"> Edit </a>
 																</div>
 																<!--end::Menu item-->
 																<!--begin::Menu item-->
 																<div class="menu-item px-3">
-																	<a href="<?= BASE_URL ?>manage-services.php?del=<?= $row['service_id'] ?>" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
+																	<a href="<?= BASE_URL ?>manage-contact.php?del=<?= $row['contact_id'] ?>" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
 																</div>
 																<!--end::Menu item-->
 															</div>

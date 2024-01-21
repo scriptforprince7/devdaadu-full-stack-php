@@ -3,15 +3,16 @@ include 'db/config.php';
 include('lock2.php');
 if (isset($_GET['del'])) {
 	$t_id = $_GET['del'];
-	$query = mysqli_query($conn, "delete from tbl_service where service_id=$t_id");
+	$query = mysqli_query($conn, "delete from tbl_products where products_id=$t_id");
 	if ($query) {
-		header('Location:' . BASE_URL . 'manage-services.php');
+		header('Location:' . BASE_URL . 'manage-products.php');
 	}
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Metronic</title>
 	<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
@@ -70,9 +71,9 @@ if (isset($_GET['del'])) {
 									<div class="card-toolbar">
 										<!--begin::Toolbar-->
 										<div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
-									
+
 											<!--begin::Add customer-->
-										<a href="add-services.php"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add New Service</button></a>	
+											<a href="add-products.php"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add New Product</button></a>
 											<!--end::Add customer-->
 										</div>
 										<!--end::Toolbar-->
@@ -97,8 +98,8 @@ if (isset($_GET['del'])) {
 											<!--begin::Table row-->
 											<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 												<th class="min-w-125px">ID</th>
-												<th class="min-w-125px">Service Name</th>
-												<th class="min-w-125px">Service Description</th>
+												<th class="min-w-125px">Product Name</th>
+												<th class="min-w-125px">Product Description</th>
 												<th class="min-w-125px">Banner Image</th>
 												<th class="min-w-125px">Middle Image</th>
 												<th class="min-w-125px">URL Slug</th>
@@ -111,7 +112,7 @@ if (isset($_GET['del'])) {
 										<!--begin::Table body-->
 										<tbody class="fw-bold text-gray-600">
 											<?php
-											$query = mysqli_query($conn, "select * from tbl_service order by service_id asc");
+											$query = mysqli_query($conn, "select * from tbl_products order by products_id asc");
 											$totl = mysqli_num_rows($query);
 											if ($totl > 0) {
 												$id = 1;
@@ -119,35 +120,33 @@ if (isset($_GET['del'])) {
 											?>
 													<tr>
 														<td>
-															<?= $row['service_id'] ?>
+															<?= $row['products_id'] ?>
 														</td>
 
 														<td>
-															<?= $row['service_name'] ?>
+															<?= $row['products_name'] ?>
 														</td>
 
 														<td>
-															<?= $row['service_desc'] ?>
+															<?= $row['products_desc'] ?>
 														</td>
 
 														<td>
-														<img src="<?= BASE_URL . 'assets/img/' . $row['service_banner_img'] . '' ?>" width="100">
+															<img src="<?= BASE_URL . 'assets/img/' . $row['products_banner_img'] . '' ?>" width="100">
 														</td>
 
 														<td>
-														<img src="<?= BASE_URL . 'assets/img/' . $row['service_bottom_img'] . '' ?>" width="100">
+															<img src="<?= BASE_URL . 'assets/img/' . $row['products_bottom_img'] . '' ?>" width="100">
 														</td>
 
 														<td>
-															<?= $row['service_slug'] ?>
+															<?= $row['products_slug'] ?>
 														</td>
 
 														<td>
-														<span class="label label-lg font-weight-bold label-inline" style="color: <?= ($row['is_active'] == 1 ? 'green' : 'red') ?>">
-    <?= ($row['is_active'] == 1 ? 'Active' : 'Inactive') ?>
-</span>
-
-
+															<span class="label label-lg font-weight-bold label-inline" style="color: <?= ($row['is_active'] == 1 ? 'green' : 'red') ?>">
+																<?= ($row['is_active'] == 1 ? 'Active' : 'Inactive') ?>
+															</span>
 														</td>
 
 														<!--end::Email=-->

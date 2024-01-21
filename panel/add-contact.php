@@ -2,23 +2,19 @@
 include('db/config.php');
 include('lock2.php');
 if (isset($_POST['launch'])) {
-	$service_name = $_POST['service_name'];
-	$service_banner_img = 'service_banner_img' . rand(0, 1000) . '_' . $_FILES['service_banner_img']['name'];
-	$service_bottom_img = 'service_bottom_img' . rand(0, 1000) . '_' . $_FILES['service_bottom_img']['name'];
-	$service_slug = $_POST['service_slug'];
-	$service_desc = $_POST['service_desc'];
+	$contact_number = $_POST['contact_number'];
+	$contact_address = $_POST['contact_address'];
+	$contact_email = $_POST['contact_email'];
+	$contact_openinghour = $_POST['contact_openinghour'];
 	$is_active = ($_POST['is_active'] != '' ? 1 : 2);
-	$query = mysqli_query($conn, "insert into tbl_service
-    	                                             SET service_name='$service_name',
-                                                         service_banner_img='$service_banner_img',
-														 service_bottom_img='$service_bottom_img',
-														 service_slug='$service_slug',
-														 service_desc='$service_desc',
+	$query = mysqli_query($conn, "insert into tbl_contact
+    	                                             SET contact_number='$contact_number',
+														 contact_address='$contact_address',
+														 contact_email='$contact_email',
+														 contact_openinghour='$contact_openinghour',
                                                          is_active='$is_active'");
 	if ($query) {
-		move_uploaded_file($_FILES['service_banner_img']['tmp_name'], 'assets/img/' . $service_banner_img . '');
-		move_uploaded_file($_FILES['service_bottom_img']['tmp_name'], 'assets/img/' . $service_bottom_img . '');
-		header('Location:manage-services.php');
+		header('Location:manage-contact.php');
 	}
 }
 ?>
@@ -80,15 +76,15 @@ if (isset($_POST['launch'])) {
 										<!--begin::Heading-->
 										<div class="card-px text-center pt-20 pb-5">
 											<!--begin::Title-->
-											<h2 class="fs-2x fw-bolder mb-0">Add New Service</h2>
+											<h2 class="fs-2x fw-bolder mb-0">Add New Contact</h2>
 											<!--end::Title-->
 											<!--begin::Description-->
 											<p class="text-gray-400 fs-4 fw-bold py-7">Click on the below button to launch
-												<br />a new service. <a href="manage-services.php"><b>Go back</b></a>
+												<br />a new contact. <a href="manage-contact.php"><b>Go back</b></a>
 											</p>
 											<!--end::Description-->
 											<!--begin::Action-->
-											<a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal" data-bs-target="#kt_modal_new_target">Launch New Service</a>
+											<a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal" data-bs-target="#kt_modal_new_target">Add New Contact</a>
 											<!--end::Action-->
 										</div>
 										<!--end::Heading-->
@@ -130,60 +126,46 @@ if (isset($_POST['launch'])) {
 													<!--begin::Heading-->
 													<div class="mb-13 text-center">
 														<!--begin::Title-->
-														<h1 class="mb-3">Launch New Service</h1>
+														<h1 class="mb-3">Add New Contact</h1>
 														<!--end::Title-->
 														<!--begin::Description-->
-														<div class="text-muted fw-bold fs-5">To see all services, please
+														<div class="text-muted fw-bold fs-5">To see all contact, please
 															check
-															<a href="manage-services.php" class="fw-bolder link-primary">Manage Services</a>.
+															<a href="manage-contact.php" class="fw-bolder link-primary">Manage Contact</a>.
 														</div>
 														<!--end::Description-->
 													</div>
 													<!--end::Heading-->
 													<!--begin::Input group-->
 													<div class="d-flex flex-column mb-8 fv-row">
-														<!--begin::Label-->
 														<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-															<span class="required">Service Name</span>
+															<span class="required">Contact Number</span>
 															<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
 														</label>
-														<!--end::Label-->
-														<input type="text" class="form-control form-control-solid" placeholder="Enter Service Name" name="service_name" />
+														<input type="text" class="form-control form-control-solid" placeholder="Enter Contact Name" name="contact_number" />
 													</div>
-													<div class="row g-9 mb-8">
-														<div class="col-md-6 fv-row">
-															<label class="required fs-6 fw-bold mb-2">Banner Image</label>
-															<input type="file" class="form-control" name="service_banner_img">
-														</div>
-
-														<div class="col-md-6 fv-row">
-															<label class="required fs-6 fw-bold mb-2">Bottom Image</label>
-															<div class="position-relative d-flex align-items-center">
-																<span class="svg-icon svg-icon-2 position-absolute mx-4">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	</svg>
-																</span>
-																<input type="file" class="form-control form-control-solid ps-12" name="service_bottom_img">
-															</div>
-														</div>
-
-														<!--end::Col-->
-													</div>
-													<!--end::Input group-->
 													<div class="d-flex flex-column mb-8 fv-row">
-														<!--begin::Label-->
 														<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-															<span class="required">URL Slug</span>
+															<span class="required">Contact Address</span>
 															<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
 														</label>
-														<!--end::Label-->
-														<input type="text" class="form-control form-control-solid" placeholder="Enter slug for URL" name="service_slug" />
+														<input type="text" class="form-control form-control-solid" placeholder="Enter Contact Name" name="contact_address" />
 													</div>
-													<!--begin::Input group-->
-													<div class="d-flex flex-column mb-8">
-														<label class="fs-6 fw-bold mb-2">Service Description</label>
-														<textarea class="form-control form-control-solid" id="editor" name="service_desc" placeholder="Type Service Description"></textarea>
+													<div class="d-flex flex-column mb-8 fv-row">
+														<label class="d-flex align-items-center fs-6 fw-bold mb-2">
+															<span class="required">Email ID</span>
+															<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
+														</label>
+														<input type="text" class="form-control form-control-solid" placeholder="Enter Contact Name" name="contact_email" />
 													</div>
+													<div class="d-flex flex-column mb-8 fv-row">
+														<label class="d-flex align-items-center fs-6 fw-bold mb-2">
+															<span class="required">Opening Hour</span>
+															<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
+														</label>
+														<input type="text" class="form-control form-control-solid" placeholder="Enter Contact Name" name="contact_openinghour" />
+													</div>
+													
 													<div class="d-flex flex-stack mb-8">
 														<div class="me-5">
 															<label class="fs-6 fw-bold">Status</label>
@@ -205,7 +187,7 @@ if (isset($_POST['launch'])) {
 													<div class="text-center">
 														<button type="reset" id="kt_modal_new_target_cancel" class="btn btn-light me-3">Cancel</button>
 														<button type="submit" name="launch" id="kt_modal" class="btn btn-primary">
-															<span class="indicator-label">Add Service</span>
+															<span class="indicator-label">Add Contact</span>
 															</span>
 														</button>
 													</div>
