@@ -2,23 +2,23 @@
 include('db/config.php');
 include('lock2.php');
 if (isset($_POST['launch'])) {
-	$service_name = $_POST['service_name'];
-	$service_banner_img = 'service_banner_img' . rand(0, 1000) . '_' . $_FILES['service_banner_img']['name'];
-	$service_bottom_img = 'service_bottom_img' . rand(0, 1000) . '_' . $_FILES['service_bottom_img']['name'];
-	$service_slug = $_POST['service_slug'];
-	$service_desc = $_POST['service_desc'];
+	$products_name = $_POST['products_name'];
+	$products_banner_img = 'products_banner_img' . rand(0, 1000) . '_' . $_FILES['products_banner_img']['name'];
+	$products_bottom_img = 'products_bottom_img' . rand(0, 1000) . '_' . $_FILES['products_bottom_img']['name'];
+	$products_slug = $_POST['products_slug'];
+	$products_desc = $_POST['products_desc'];
 	$is_active = ($_POST['is_active'] != '' ? 1 : 2);
-	$query = mysqli_query($conn, "insert into tbl_service
-    	                                             SET service_name='$service_name',
-                                                         service_banner_img='$service_banner_img',
-														 service_bottom_img='$service_bottom_img',
-														 service_slug='$service_slug',
-														 service_desc='$service_desc',
+	$query = mysqli_query($conn, "insert into tbl_products
+    	                                             SET products_name='$products_name',
+                                                         products_banner_img='$products_banner_img',
+														 products_bottom_img='$products_bottom_img',
+														 products_slug='$products_slug',
+														 products_desc='$products_desc',
                                                          is_active='$is_active'");
 	if ($query) {
-		move_uploaded_file($_FILES['service_banner_img']['tmp_name'], 'assets/img/' . $service_banner_img . '');
-		move_uploaded_file($_FILES['service_bottom_img']['tmp_name'], 'assets/img/' . $service_bottom_img . '');
-		header('Location:manage-services.php');
+		move_uploaded_file($_FILES['products_banner_img']['tmp_name'], 'assets/img/' . $products_banner_img . '');
+		move_uploaded_file($_FILES['products_bottom_img']['tmp_name'], 'assets/img/' . $products_bottom_img . '');
+		header('Location:manage-products.php');
 	}
 }
 ?>
@@ -80,15 +80,15 @@ if (isset($_POST['launch'])) {
 										<!--begin::Heading-->
 										<div class="card-px text-center pt-20 pb-5">
 											<!--begin::Title-->
-											<h2 class="fs-2x fw-bolder mb-0">Add New Service</h2>
+											<h2 class="fs-2x fw-bolder mb-0">Add New Product</h2>
 											<!--end::Title-->
 											<!--begin::Description-->
 											<p class="text-gray-400 fs-4 fw-bold py-7">Click on the below button to launch
-												<br />a new service. <a href="manage-services.php"><b>Go back</b></a>
+												<br />a new product. <a href="manage-products.php"><b>Go back</b></a>
 											</p>
 											<!--end::Description-->
 											<!--begin::Action-->
-											<a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal" data-bs-target="#kt_modal_new_target">Launch New Service</a>
+											<a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal" data-bs-target="#kt_modal_new_target">Add New Product</a>
 											<!--end::Action-->
 										</div>
 										<!--end::Heading-->
@@ -130,12 +130,12 @@ if (isset($_POST['launch'])) {
 													<!--begin::Heading-->
 													<div class="mb-13 text-center">
 														<!--begin::Title-->
-														<h1 class="mb-3">Launch New Service</h1>
+														<h1 class="mb-3">Add New Product</h1>
 														<!--end::Title-->
 														<!--begin::Description-->
-														<div class="text-muted fw-bold fs-5">To see all services, please
+														<div class="text-muted fw-bold fs-5">To see all products, please
 															check
-															<a href="manage-services.php" class="fw-bolder link-primary">Manage Services</a>.
+															<a href="manage-products.php" class="fw-bolder link-primary">Manage Products</a>.
 														</div>
 														<!--end::Description-->
 													</div>
@@ -144,16 +144,16 @@ if (isset($_POST['launch'])) {
 													<div class="d-flex flex-column mb-8 fv-row">
 														<!--begin::Label-->
 														<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-															<span class="required">Service Name</span>
+															<span class="required">Product Name</span>
 															<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
 														</label>
 														<!--end::Label-->
-														<input type="text" class="form-control form-control-solid" placeholder="Enter Service Name" name="service_name" />
+														<input type="text" class="form-control form-control-solid" placeholder="Enter Product Name" name="products_name" />
 													</div>
 													<div class="row g-9 mb-8">
 														<div class="col-md-6 fv-row">
 															<label class="required fs-6 fw-bold mb-2">Banner Image</label>
-															<input type="file" class="form-control" name="service_banner_img">
+															<input type="file" class="form-control" name="products_banner_img">
 														</div>
 
 														<div class="col-md-6 fv-row">
@@ -163,7 +163,7 @@ if (isset($_POST['launch'])) {
 																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 																	</svg>
 																</span>
-																<input type="file" class="form-control form-control-solid ps-12" name="service_bottom_img">
+																<input type="file" class="form-control form-control-solid ps-12" name="products_bottom_img">
 															</div>
 														</div>
 
@@ -177,12 +177,12 @@ if (isset($_POST['launch'])) {
 															<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
 														</label>
 														<!--end::Label-->
-														<input type="text" class="form-control form-control-solid" placeholder="Enter slug for URL" name="service_slug" />
+														<input type="text" class="form-control form-control-solid" placeholder="Enter slug for URL" name="products_slug" />
 													</div>
 													<!--begin::Input group-->
 													<div class="d-flex flex-column mb-8">
-														<label class="fs-6 fw-bold mb-2">Service Description</label>
-														<textarea class="form-control form-control-solid" id="editor" name="service_desc" placeholder="Type Service Description"></textarea>
+														<label class="fs-6 fw-bold mb-2">Product Description</label>
+														<textarea class="form-control form-control-solid" id="editor" name="products_desc" placeholder="Type Product Description"></textarea>
 													</div>
 													<div class="d-flex flex-stack mb-8">
 														<div class="me-5">
@@ -205,7 +205,7 @@ if (isset($_POST['launch'])) {
 													<div class="text-center">
 														<button type="reset" id="kt_modal_new_target_cancel" class="btn btn-light me-3">Cancel</button>
 														<button type="submit" name="launch" id="kt_modal" class="btn btn-primary">
-															<span class="indicator-label">Add Service</span>
+															<span class="indicator-label">Add Product</span>
 															</span>
 														</button>
 													</div>

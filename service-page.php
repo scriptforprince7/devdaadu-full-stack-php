@@ -1,16 +1,9 @@
-<?php include 'panel/db/config.php';
+<?php
+    include 'includes/header.php';
+    $service_id = $_GET['id'];
+    $service = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tbl_service WHERE service_id = '$service_id'"));
+    ?>
 
-$service_id = $_GET['id'];
-$service = 
-mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tbl_service WHERE service_id = '$service_id'")) 
-; 
-
-
-
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,220 +12,133 @@ mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tbl_service WHERE service_
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
-    <title><?=$service['service_name']?> | Dev Daadu - Financial Consultant</title>
+    <title><?= $service['service_name'] ?> | Dev Daadu | INVESTMENT & INSURANCE CONSULTANTS</title>
     <?php include 'includes/head.php' ?>
 
     <style>
-        .section-padding.service-top {
-            padding: 40px 0px;
-        }
+    .section-padding.service-top {
+        padding: 40px 0px;
+    }
 
-        .swiper-wrapper {
+    .swiper-wrapper {
 
-            transition-timing-function: linear !important
-        }
+        transition-timing-function: linear !important
+    }
     </style>
 </head>
 
 <body class="white-bg">
 
-    <?php include 'includes/header.php' ?>
-
-            <div class="breadcrumb-area services section-padding service-top light-bg-1 pb-0">
-                <div class="container">
-                    <div class="row mt-1">
-                        <div class="col-12">
-                            <div class="bread-bg">
-                                <img src="http://localhost/DevDaadu/panel/assets/img/<?=$service['service_banner_img']?>" alt="">
-                            </div>
-                        </div>
+    <div class="breadcrumb-area services section-padding service-top light-bg-1 pb-0">
+        <div class="container">
+            <div class="row mt-1">
+                <div class="col-12">
+                    <div class="bread-bg">
+                        <img src="http://localhost/DevDaadu/panel/assets/img/<?= $service['service_banner_img'] ?>"
+                            alt="">
                     </div>
-
-                </div>
-            </div>
-
-            <!-- Service Page  -->
-
-
-            <style>
-                .service-heading {
-                    padding: 50px 0px 10px 0px;
-
-                }
-
-                h2.service-heading {
-                    font-family: 'Bebas Neue', sans-serif !important;
-                    font-size: 74px;
-                    color: #056251;
-                }
-
-                .service-page-content {
-                    margin-top: 10px;
-                }
-            </style>
-            <div class="service-page pb-60">
-                <div class="container">
-
-                    <div class="col-xl-12">
-                        <div class="section-title">
-                            <h2 class="text-center service-heading">
-                                <?=$service['service_name']?>
-                            </h2>
-                            <hr>
-                        </div>
-                        <div class="service-page-content" ;>
-                            <p>
-                            <?=$service['service_desc']?>
-                            </p>
-
-                            <div class="video-section" data-background="http://localhost/DevDaadu/panel/assets/img/<?=$service['service_bottom_img']?>">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Solution Section  -->
-
-            <div class="solution-section pb-0">
-                <div class="row">
-                    <div class="offset-xl-2 col-xl-8 text-center">
-                        <div class="section-title">
-                            <h2>Solutions: All Your Questions
-                                Answered</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="offset-xl-1 col-xl-10 mt-50">
-                        <div class="accordion faqs" id="accordionFaq">
-                            <div class="card">
-                                <div class="card-header" id="heading1">
-                                    <h5 class="mb-0 subtitle">
-                                        <button class="btn btn-link collapsed active" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                                            What Is Tax Advisor Services?
-                                        </button>
-                                    </h5>
-                                </div>
-
-                                <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionFaq">
-                                    <div class="card-body">
-                                        <div class="content">
-                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="heading2">
-                                    <h5 class="mb-0 subtitle">
-                                        <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
-                                            How Many Service We Provide ?
-                                        </button>
-                                    </h5>
-                                </div>
-
-                                <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionFaq">
-                                    <div class="card-body">
-                                        <div class="content">
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="heading3">
-                                    <h5 class="mb-0 subtitle">
-                                        <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                                            What Are Your Terms and Conditions?
-                                        </button>
-                                    </h5>
-                                </div>
-
-                                <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionFaq">
-                                    <div class="card-body">
-                                        <div class="content">
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="heading4">
-                                    <h5 class="mb-0 subtitle">
-                                        <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse2">
-                                            What Kinds of Payment Do You Accept?
-                                        </button>
-                                    </h5>
-                                </div>
-
-                                <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionFaq">
-                                    <div class="card-body">
-                                        <div class="content">
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-    <!-- Client Area  -->
-    <div class="pb-60 pt-60">
-        <hr>
-        <!-- Slider main container -->
-        <div class="client-swiper">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-01.jpg" alt="themeforest-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-02.png" alt="codecanyon-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-03.jpg" alt="videohibe-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-04.png" alt="graphicriver-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-05.png" alt="themeforest-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-06.jpg" alt="codecanyon-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-07.jpg" alt="videohibe-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-08.jpg" alt="graphicriver-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-09.jpg" alt="themeforest-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-10.jpg" alt="codecanyon-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-11.png" alt="videohibe-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-12.gif" alt="graphicriver-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-13.gif" alt="graphicriver-logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="assets/img/client/client-14.gif" alt="graphicriver-logo">
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Service Page  -->
+
+
+    <style>
+    .service-heading {
+        padding: 50px 0px 10px 0px;
+
+    }
+
+    h2.service-heading {
+        font-family: 'Bebas Neue', sans-serif !important;
+        font-size: 74px;
+        color: #056251;
+    }
+
+    .service-page-content {
+        margin-top: 10px;
+    }
+    </style>
+    <div class="service-page pb-60">
+        <div class="container">
+
+            <div class="col-xl-12">
+                <div class="section-title">
+                    <h2 class="text-center service-heading">
+                        <?= $service['service_name'] ?>
+                    </h2>
+                    <hr>
+                </div>
+                <div class="service-page-content" ;>
+                    <p>
+                        <?= $service['service_desc'] ?>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Solution Section  -->
+
+    <div class="solution-section section-padding pb-0">
+        <div class="row">
+            <div class="offset-xl-2 col-xl-8 text-center">
+                <div class="section-title">
+                    <h2>Solutions: All Your Questions
+                        Answered</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-xl-1 col-xl-10 mt-50">
+                <div class="accordion faqs" id="accordionFaq2">
+
+
+                    <?php
+                    $query = mysqli_query($conn, "select * from tbl_faq where is_active=1");
+                    $totl = mysqli_num_rows($query);
+                    if ($totl > 0) {
+                        $id = 1;
+                        while ($row = mysqli_fetch_array($query)) {
+                    ?>
+                    <div class="card">
+                        <div class="card-header" id="heading5">
+                            <h5 class="mb-0 subtitle">
+                                <button class="btn btn-link collapsed active" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse1">
+                                    <?= $row['faq_question'] ?>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapse5" class="collapse show" aria-labelledby="heading5"
+                            data-parent="#accordionFaq2">
+                            <div class="card-body">
+                                <div class="content">
+                                    <p>
+                                        <?= $row['faq_answer'] ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php $id++;
+                        }
+                    } else { ?>
+                    <div>
+                        <p salign="center"></p>
+                    </div>
+                    <?php } ?>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Contact Section  -->
     <div class="contact-area section-padding pt-0">

@@ -1,16 +1,3 @@
-<?php
-include 'panel/db/config.php';
-
-// include('lock2.php');
-// if (isset($_GET['del'])) {
-// 	$t_id = $_GET['del'];
-	// $query = mysqli_query($conn, "delete from tbl_service where service_id=$t_id");
-// 	if ($query) {
-// 		header('Location:' . BASE_URL . 'manage-services.php');
-// 	}
-// }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +6,7 @@ include 'panel/db/config.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
-    <title>Dinesh Arora | Tax Advisor & Financial Consulting</title>
+    <title>Dev Daadu | INVESTMENT & INSURANCE CONSULTANTS</title>
     <?php include 'includes/head.php' ?>
 </head>
 
@@ -30,39 +17,38 @@ include 'panel/db/config.php';
 
     <div class="hero-area hero-area-two">
         <div class="homepage-slides owl-carousel">
+
+            <?php
+            $query = mysqli_query($conn, "select * from tbl_slider where is_active=1");
+            $totl = mysqli_num_rows($query);
+            if ($totl > 0) {
+                $id = 1;
+                while ($row = mysqli_fetch_array($query)) {
+            ?>
             <div class="single-slide-item">
-                <div class="slider-bg bg-cover" data-background="assets/img/slider/slide-1.jpg">
+                <div class="slider-bg bg-cover"
+                    data-background="<?= BASE_URL . 'assets/img/' . $row['slider_img'] . '' ?>">
                     <div class="overlay-2-disabled"></div>
                     <div class="container">
                         <div class="hero-area-content">
-                            <h3 class="text-center" style="display: block;">Make Your Taxes Easy</h3>
-                            <h1 class="text-center">Reliable & Trusted <br>Advice</h1>
+                            <h3 class="text-center" style="display: block;">
+                                <?= $row['slider_prehead'] ?>
+                            </h3>
+                            <h1 class="text-center">
+                                <?= $row['slider_mainhead'] ?>
+                            </h1>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="single-slide-item">
-                <div class="slider-bg bg-cover" data-background="assets/img/slider/slide-2.jpg">
-                    <div class="overlay-2-disabled"></div>
-                    <div class="container">
-                        <div class="hero-area-content">
-                            <h3 class="text-center" style="display: block;">Make Your Taxes Easy</h3>
-                            <h1 class="text-center">Reliable & Trusted <br>Advice</h1>
-                        </div>
-                    </div>
-                </div>
+
+            <?php $id++;
+                }
+            } else { ?>
+            <div>
+                <p salign="center"></p>
             </div>
-            <div class="single-slide-item">
-                <div class="slider-bg bg-cover" data-background="assets/img/slider/slide-3.jpg">
-                    <div class="overlay-2-disabled"></div>
-                    <div class="container">
-                        <div class="hero-area-content">
-                            <h3 class="text-center" style="display: block;">Make Your Taxes Easy</h3>
-                            <h1 class="text-center">Reliable & Trusted <br>Advice</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 
@@ -72,16 +58,29 @@ include 'panel/db/config.php';
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 text-center">
+                    <?php
+                    $query = mysqli_query($conn, "select * from tbl_about where is_active=1");
+                    $totl = mysqli_num_rows($query);
+                    if ($totl > 0) {
+                        $id = 1;
+                        while ($row = mysqli_fetch_array($query)) {
+                    ?>
                     <div class="section-title">
-                        <h2>We Have Than More <a href="about.php">25 Years of Experience</a> <br>
-                            in Tax Advisor & Financial Consulting <br>
-                            Services
+                        <h2>
+                            <?= $row['about_heading'] ?>
                         </h2>
                     </div>
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi sint tempora voluptate! Quae, mollitia! Adipisci consequatur a, necessitatibus ipsa ipsam dignissimos. Rerum alias soluta odio enim, aperiam minima iure quasi! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate mollitia eaque alias. Repellendus vero corporis facere, distinctio atque commodi omnis nam .
+                        <?= $row['about_desc'] ?>
                     </p>
 
+                    <?php $id++;
+                        }
+                    } else { ?>
+                    <div>
+                        <p salign="center"></p>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -90,26 +89,26 @@ include 'panel/db/config.php';
 
     <!-- table area -->
     <style>
-        .feature-section {
-            padding-top: 50px;
-        }
+    .feature-section {
+        padding-top: 50px;
+    }
 
-        .feature-section h2 {
-            font-size: 40px;
-        }
+    .feature-section h2 {
+        font-size: 40px;
+    }
 
 
-        .tableSwiper {
-            /* height: 600px; */
-            width: 100%;
-        }
+    .tableSwiper {
+        /* height: 600px; */
+        width: 100%;
+    }
 
-        .stable {
-            margin-top: 50px;
-            overflow-x: hidden;
-            overflow-y: hidden;
+    .stable {
+        margin-top: 50px;
+        overflow-x: hidden;
+        overflow-y: hidden;
 
-        }
+    }
     </style>
     <section>
         <div class="stable">
@@ -123,16 +122,24 @@ include 'panel/db/config.php';
                             <tbody>
                                 <tr class="font_sty">
                                     <td width="1%">SENSEX
-                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span class="value">72,303.85</span><br><span class=""><img src="https://my-eoffice.com/img/down.png"> -106.53 (-0.15%) </span>
+                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span
+                                            class="value">72,303.85</span><br><span class=""><img
+                                                src="https://my-eoffice.com/img/down.png"> -106.53 (-0.15%) </span>
                                     </td>
                                     <td width="1%">GOLD
-                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span class="value">63346.00</span><br><span class=""><img src="https://my-eoffice.com/img/down.png"> -43.00 (-0.07%) </span>
+                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span
+                                            class="value">63346.00</span><br><span class=""><img
+                                                src="https://my-eoffice.com/img/down.png"> -43.00 (-0.07%) </span>
                                     </td>
                                     <td width="1%">SILVER
-                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span class="value">74404.00</span><br><span class=""><img src="https://my-eoffice.com/img/down.png"> -555.00 (-0.74%) </span>
+                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span
+                                            class="value">74404.00</span><br><span class=""><img
+                                                src="https://my-eoffice.com/img/down.png"> -555.00 (-0.74%) </span>
                                     </td>
                                     <td width="1%">Crude
-                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span class="value">6003.00</span><br><span class=""><img src="https://my-eoffice.com/img/down.png"> -45.00 (-0.74%) </span>
+                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span
+                                            class="value">6003.00</span><br><span class=""><img
+                                                src="https://my-eoffice.com/img/down.png"> -45.00 (-0.74%) </span>
                                     </td>
                                 </tr>
 
@@ -145,16 +152,24 @@ include 'panel/db/config.php';
                             <tbody>
                                 <tr>
                                     <td width="1%">USD/INR
-                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span class="value">83.157</span><br><span class=""><img src="https://my-eoffice.com/img/down.png"> -0.039 (-0.05%) </span>
+                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span
+                                            class="value">83.157</span><br><span class=""><img
+                                                src="https://my-eoffice.com/img/down.png"> -0.039 (-0.05%) </span>
                                     </td>
                                     <td width="1%">EURO
-                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span class="value">92.0940</span><br><span class=""><img src="https://my-eoffice.com/img/up.png"> +0.1235 (+0.13%) </span>
+                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span
+                                            class="value">92.0940</span><br><span class=""><img
+                                                src="https://my-eoffice.com/img/up.png"> +0.1235 (+0.13%) </span>
                                     </td>
                                     <td width="1%">UK
-                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span class="value">106.166</span><br><span class=""><img src="https://my-eoffice.com/img/up.png"> +0.267 (+0.25%) </span>
+                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span
+                                            class="value">106.166</span><br><span class=""><img
+                                                src="https://my-eoffice.com/img/up.png"> +0.267 (+0.25%) </span>
                                     </td>
                                     <td width="1%">YEN
-                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span class="value">58.8777</span><br><span class=""><img src="https://my-eoffice.com/img/up.png"> +0.0761 +0.13% </span>
+                                        <hr style="background-color:#1b509e; height:1px; border:none;"><span
+                                            class="value">58.8777</span><br><span class=""><img
+                                                src="https://my-eoffice.com/img/up.png"> +0.0761 +0.13% </span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -185,7 +200,8 @@ include 'panel/db/config.php';
                                 <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks</p>
 
                                 <div class="btn-container">
-                                    <a href="#" class="main-btn">
+                                    <a href="https://www.karvykra.com/UPanSearchGlobalWithPanExempt.aspx"
+                                        class="main-btn">
                                         Check Status
                                     </a>
                                 </div>
@@ -201,13 +217,14 @@ include 'panel/db/config.php';
                             </div>
                             <div class="feature-title">
                                 <h4 class="text-white">
-                                    Check your status of KYC
+                                    Do it yourself; digital KYC
                                 </h4>
                                 <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks</p>
 
                                 <div class="btn-container">
-                                    <a href="#" class="main-btn">
-                                        Check Status
+                                    <a href="https://www.camsonline.com/Investors/Transactions/KYC/Paper-less-KYC"
+                                        class="main-btn">
+                                        Digital KYC
                                     </a>
                                 </div>
                             </div>
@@ -227,8 +244,8 @@ include 'panel/db/config.php';
                 <div class="offset-xl-1 col-xl-10 text-center">
                     <div class="section-title">
                         <p>WHY CHOOSE US</p>
-                        <h2>We Provide High-Quality Accounting
-                            & Tax Service</h2>
+                        <h2>Your Success,<br> Our <b><span style="color:#056251;">Six Essential Services</span></b> for
+                            Excellence.</h2>
                     </div>
                 </div>
             </div>
@@ -239,10 +256,10 @@ include 'panel/db/config.php';
                             <i class="flaticon-goal"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>Financial Health Check</h4>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit magni</p>
+                            <h4>Financial Planning</h4>
+                            <p>A financial plan is the road map for your financial life.</p>
                             <div class="btn-container text-center">
-                                <a href="#" class="main-btn">
+                                <a href="service-page.php?id=13" class="main-btn">
                                     Go Check
                                 </a>
                             </div>
@@ -255,10 +272,10 @@ include 'panel/db/config.php';
                             <i class="flaticon-group"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>Financial Fact Finder</h4>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit magni</p>
+                            <h4>Tax Planning</h4>
+                            <p>Tax planning is not a device to reduce tax burden.</p>
                             <div class="btn-container text-center">
-                                <a href="#" class="main-btn">
+                                <a href="service-page.php?id=14" class="main-btn">
                                     Go Check
                                 </a>
                             </div>
@@ -271,10 +288,61 @@ include 'panel/db/config.php';
                             <i class="flaticon-customer-service"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>Goal Based Planning</h4>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit magni</p>
+                            <h4>Wealth Planning</h4>
+                            <p>We all have objectives we want to achieve in life.</p>
                             <div class="btn-container text-center">
-                                <a href="#" class="main-btn">
+                                <a href="service-page.php?id=15" class="main-btn">
+                                    Go Check
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-60">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-12 wow fadeInUp animated" data-wow-delay="100ms">
+                    <div class="feature-item-wrap">
+                        <div class="feature-icon">
+                            <i class="flaticon-goal"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Child Future Planning</h4>
+                            <p>
+                                All parents dream of fulfilling all the requirements and desires of their kids.</p>
+                            <div class="btn-container text-center">
+                                <a href="service-page.php?id=16" class="main-btn">
+                                    Go Check
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-12 wow fadeInUp animated" data-wow-delay="200ms">
+                    <div class="feature-item-wrap">
+                        <div class="feature-icon">
+                            <i class="flaticon-group"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Retirement Planning</h4>
+                            <p>With retirement not far around the corner, your needs will be changing.</p>
+                            <div class="btn-container text-center">
+                                <a href="service-page.php?id=17" class="main-btn">
+                                    Go Check
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-12 wow fadeInUp animated" data-wow-delay="300ms">
+                    <div class="feature-item-wrap">
+                        <div class="feature-icon">
+                            <i class="flaticon-customer-service"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Loans</h4>
+                            <p>Life is full of unexpected expenses. Go for loan instead. </p>
+                            <div class="btn-container text-center">
+                                <a href="service-page.php?id=19" class="main-btn">
                                     Go Check
                                 </a>
                             </div>
@@ -303,19 +371,23 @@ include 'panel/db/config.php';
                 </div>
 
                 <div class="offset-xl-4 col-xl-7 offset-lg-4 col-lg-7 offset-md-4 col-md-7">
-                    <p class="text-white">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words look even slightly believable. If you are going to use a passage </p>
+                    <p class="text-white">Unlock the door to a brighter future! Our mission is to empower individuals
+                        like you to make positive changes in your lives. There are many variations of passages of Lorem
+                        Ipsum available, but the majority have suffered alteration in some form, by injected humour, or
+                        randomised words look even slightly believable. If you are going to use a passage</p>
                 </div>
             </div>
         </div>
     </div>
 
 
+
     <!-- Solution Section  -->
 
     <style>
-        .solution-section {
-            padding-bottom: 100px !important;
-        }
+    .solution-section {
+        padding-bottom: 100px !important;
+    }
     </style>
 
     <div class="solution-section section-padding pb-0">
@@ -330,74 +402,44 @@ include 'panel/db/config.php';
         <div class="row">
             <div class="offset-xl-1 col-xl-10 mt-50">
                 <div class="accordion faqs" id="accordionFaq2">
+
+
+                    <?php
+                    $query = mysqli_query($conn, "select * from tbl_faq where is_active=1");
+                    $totl = mysqli_num_rows($query);
+                    if ($totl > 0) {
+                        $id = 1;
+                        while ($row = mysqli_fetch_array($query)) {
+                    ?>
                     <div class="card">
                         <div class="card-header" id="heading5">
                             <h5 class="mb-0 subtitle">
-                                <button class="btn btn-link collapsed active" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse1">
-                                    What Is Tax Advisor Services?
+                                <button class="btn btn-link collapsed active" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse1">
+                                    <?= $row['faq_question'] ?>
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="collapse5" class="collapse show" aria-labelledby="heading5" data-parent="#accordionFaq2">
+                        <div id="collapse5" class="collapse show" aria-labelledby="heading5"
+                            data-parent="#accordionFaq2">
                             <div class="card-body">
                                 <div class="content">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,</p>
+                                    <p>
+                                        <?= $row['faq_answer'] ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="heading6">
-                            <h5 class="mb-0 subtitle">
-                                <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse2">
-                                    How Many Service We Provide ?
-                                </button>
-                            </h5>
-                        </div>
+                    <?php $id++;
+                        }
+                    } else { ?>
+                    <div>
+                        <p salign="center"></p>
+                    </div>
+                    <?php } ?>
 
-                        <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordionFaq2">
-                            <div class="card-body">
-                                <div class="content">
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="heading7">
-                            <h5 class="mb-0 subtitle">
-                                <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse3">
-                                    What Are Your Terms and Conditions?
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordionFaq2">
-                            <div class="card-body">
-                                <div class="content">
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="heading8">
-                            <h5 class="mb-0 subtitle">
-                                <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse2">
-                                    What Kinds of Payment Do You Accept?
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse8" class="collapse" aria-labelledby="heading8" data-parent="#accordionFaq2">
-                            <div class="card-body">
-                                <div class="content">
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -416,16 +458,24 @@ include 'panel/db/config.php';
         </div>
         <div class="container">
             <div class="testimonial-carousel owl-carousel">
+
+
+                <?php
+                $query = mysqli_query($conn, "select * from tbl_testimonials where is_active=1");
+                $totl = mysqli_num_rows($query);
+                if ($totl > 0) {
+                    $id = 1;
+                    while ($row = mysqli_fetch_array($query)) {
+                ?>
                 <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-6.jpg" alt="">
-                    </div>
                     <div class="testimonial-content">
                         <div class="quote-sign">
                             <i class="las la-quote-left"></i>
                         </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Shawn Beltran <span>Entrepreneur</span></h5>
+                        <p class="text-black">
+                            <?= $row['testimonials_content'] ?>
+                        </p>
+                        <h5 class="testimonial-title"><?= $row['testimonials_name'] ?><span>Entrepreneur</span></h5>
                         <div class="testimonal-review-wrap">
                             <i class="las la-star"></i>
                             <i class="las la-star"></i>
@@ -434,117 +484,23 @@ include 'panel/db/config.php';
                             <i class="las la-star"></i>
                         </div>
                     </div>
-
                 </div>
-                <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-7.jpg" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="quote-sign">
-                            <i class="las la-quote-left"></i>
-                        </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Jonatan Rohim <span>Designation</span></h5>
-                        <div class="testimonal-review-wrap">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                    </div>
-
+                <?php $id++;
+                    }
+                } else { ?>
+                <div>
+                    <p salign="center"></p>
                 </div>
-                <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-6.jpg" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="quote-sign">
-                            <i class="las la-quote-left"></i>
-                        </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Shawn Beltran <span>Entrepreneur</span></h5>
-                        <div class="testimonal-review-wrap">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-7.jpg" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="quote-sign">
-                            <i class="las la-quote-left"></i>
-                        </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Jonatan Rohim <span>Designation</span></h5>
-                        <div class="testimonal-review-wrap">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-6.jpg" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="quote-sign">
-                            <i class="las la-quote-left"></i>
-                        </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Shawn Beltran <span>Entrepreneur</span></h5>
-                        <div class="testimonal-review-wrap">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-7.jpg" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="quote-sign">
-                            <i class="las la-quote-left"></i>
-                        </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Jonatan Rohim <span>Designation</span></h5>
-                        <div class="testimonal-review-wrap">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                    </div>
-
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
 
     <style>
-        .swiper-wrapper {
+    .swiper-wrapper {
 
-            transition-timing-function: linear !important
-        }
+        transition-timing-function: linear !important
+    }
     </style>
 
     <!-- Client Area  -->
@@ -616,16 +572,22 @@ include 'panel/db/config.php';
                         <div class="card">
                             <div class="card-header" id="heading1">
                                 <h5 class="mb-0 subtitle">
-                                    <button class="btn btn-link collapsed active" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                        What Is Tax Advisor Services?
+                                    <button class="btn btn-link collapsed active" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true"
+                                        aria-controls="collapse1">
+                                        What is the purpose of the Contact Form?
                                     </button>
                                 </h5>
                             </div>
 
-                            <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionFaq">
+                            <div id="collapse1" class="collapse show" aria-labelledby="heading1"
+                                data-parent="#accordionFaq">
                                 <div class="card-body">
                                     <div class="content">
-                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
+                                        <p>The Contact Form is a convenient way for you to get in touch with us. Whether
+                                            you have questions, need assistance, or want to provide feedback, simply
+                                            fill out the form, and we'll get back to you as soon as possible.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -633,8 +595,9 @@ include 'panel/db/config.php';
                         <div class="card">
                             <div class="card-header" id="heading2">
                                 <h5 class="mb-0 subtitle">
-                                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                        How Many Service We Provide ?
+                                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                        How quickly can I expect a response?
                                     </button>
                                 </h5>
                             </div>
@@ -642,7 +605,11 @@ include 'panel/db/config.php';
                             <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionFaq">
                                 <div class="card-body">
                                     <div class="content">
-                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
+                                        <p>We strive to respond to Contact Form submissions promptly. Typically, you can
+                                            expect to hear back from us within 24-48 hours. If your inquiry is
+                                            time-sensitive, please indicate that in the form, and we'll prioritize
+                                            accordingly.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -650,8 +617,10 @@ include 'panel/db/config.php';
                         <div class="card">
                             <div class="card-header" id="heading3">
                                 <h5 class="mb-0 subtitle">
-                                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                                        What Are Your Terms and Conditions?
+                                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        Can I use this Form for business inquiries?
+                                    </button>
                                     </button>
                                 </h5>
                             </div>
@@ -659,7 +628,11 @@ include 'panel/db/config.php';
                             <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionFaq">
                                 <div class="card-body">
                                     <div class="content">
-                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
+                                        <p>Absolutely! The Contact Form is designed to accommodate various inquiries,
+                                            including business-related ones. If you have partnership proposals,
+                                            collaboration ideas, or any other business-related matters, feel free to use
+                                            the form, and we'll be in touch.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -674,7 +647,7 @@ include 'panel/db/config.php';
                         </div>
 
                         <div class="contact-form-inner">
-                            <form action="#">
+                            <form action="process_form.php" method="post">
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
                                         <input type="text" placeholder="Name">
@@ -689,7 +662,8 @@ include 'panel/db/config.php';
                                         <input type="text" placeholder="How can help you?">
                                     </div>
                                     <div class="col-12">
-                                        <textarea name="message" id="message" cols="30" rows="10" placeholder="Your message"></textarea>
+                                        <textarea name="message" id="message" cols="30" rows="10"
+                                            placeholder="Your message"></textarea>
                                     </div>
                                     <input type="submit" value="Send a Message">
                                 </div>
@@ -707,13 +681,13 @@ include 'panel/db/config.php';
         <div class="container">
             <div class="contact-innner green-bg d-flex align-items-center justify-content-center">
                 <div class="text-left">
-                    <h3>New to tax advisor services</h3>
+                    <h3>New to financial consultant service</h3>
                 </div>
                 <div class="contact-icon">
                     <i class="las la-phone"></i>
                 </div>
                 <div class="text-right">
-                    <h3>Talk to our expert +1 (234) 567 890</h3>
+                    <h3>Talk to our expert 91-9896570700</h3>
                 </div>
             </div>
         </div>
@@ -744,14 +718,14 @@ include 'panel/db/config.php';
 
 
     <style>
-        #cinstagram {
-            padding: 50px 0px;
-        }
+    #cinstagram {
+        padding: 50px 0px;
+    }
 
-        .footer-pad {
-            padding-top: 50px;
-            background-color: #FCF2E8;
-        }
+    .footer-pad {
+        padding-top: 50px;
+        background-color: #FCF2E8;
+    }
     </style>
 
     <div class="footer-pad"></div>

@@ -1,5 +1,3 @@
-<?php include 'db/config.php'?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
-    <title>Taxvi | Tax Advisor & Financial Consulting HTML Template</title>
+    <title>About Us | Dev Daadu | INVESTMENT & INSURANCE CONSULTANTS</title>
     <?php include 'includes/head.php' ?>
 
 </head>
@@ -18,7 +16,6 @@
 
     <?php include 'includes/header.php' ?>
 
-
     <!-- Feature Section  -->
 
     <div class="feature-section section-padding pb-0">
@@ -26,9 +23,26 @@
             <div class="row">
                 <div class="col-xl-12 text-center">
                     <div class="section-title">
-                        <h2>We Have Than More <a href="about.php">25 Years of Experience</a> <br>
-                            in Tax Advisor & Financial Consulting <br>
-                            Services</h2>
+                        <?php
+                        $query = mysqli_query($conn, "select * from tbl_about where is_active=1");
+                        $totl = mysqli_num_rows($query);
+                        if ($totl > 0) {
+                            $id = 1;
+                            while ($row = mysqli_fetch_array($query)) {
+                        ?>
+                        <h2>
+                            <?= $row['about_heading'] ?>
+                        </h2>
+                        <?php $id++;
+                            }
+                        } else { ?>
+                        <div>
+                            <p salign="center"></p>
+                        </div>
+                        <?php } ?>
+                        <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis accusamus deserunt at
+                            placeat id explicabo tempore, cupiditate suscipit perferendis ab ex odit. Sapiente
+                            aspernatur debitis maiores modi aliquam sint voluptates!</span>
                     </div>
                 </div>
             </div>
@@ -39,8 +53,13 @@
                             <i class="flaticon-goal"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>Quality Services</h4>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit magni</p>
+                            <h4>Financial Planning</h4>
+                            <p>A financial plan is the road map for your financial life.</p>
+                            <div class="btn-container text-center">
+                                <a href="service-page.php?id=13" class="main-btn">
+                                    Go Check
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,8 +69,13 @@
                             <i class="flaticon-group"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>Professional Team</h4>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit magni</p>
+                            <h4>Tax Planning</h4>
+                            <p>Tax planning is not a device to reduce tax burden.</p>
+                            <div class="btn-container text-center">
+                                <a href="service-page.php?id=14" class="main-btn">
+                                    Go Check
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,8 +85,64 @@
                             <i class="flaticon-customer-service"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>24/7 Full Support</h4>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit magni</p>
+                            <h4>Wealth Planning</h4>
+                            <p>We all have objectives we want to achieve in life.</p>
+                            <div class="btn-container text-center">
+                                <a href="service-page.php?id=15" class="main-btn">
+                                    Go Check
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-60">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-12 wow fadeInUp animated" data-wow-delay="100ms">
+                    <div class="feature-item-wrap">
+                        <div class="feature-icon">
+                            <i class="flaticon-goal"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Child Future Planning</h4>
+                            <p>
+                                All parents dream of fulfilling all the requirements and desires of their kids.</p>
+                            <div class="btn-container text-center">
+                                <a href="service-page.php?id=16" class="main-btn">
+                                    Go Check
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-12 wow fadeInUp animated" data-wow-delay="200ms">
+                    <div class="feature-item-wrap">
+                        <div class="feature-icon">
+                            <i class="flaticon-group"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Retirement Planning</h4>
+                            <p>With retirement not far around the corner, your needs will be changing.</p>
+                            <div class="btn-container text-center">
+                                <a href="service-page.php?id=17" class="main-btn">
+                                    Go Check
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-12 wow fadeInUp animated" data-wow-delay="300ms">
+                    <div class="feature-item-wrap">
+                        <div class="feature-icon">
+                            <i class="flaticon-customer-service"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Loans</h4>
+                            <p>Life is full of unexpected expenses. Go for loan instead. </p>
+                            <div class="btn-container text-center">
+                                <a href="service-page.php?id=19" class="main-btn">
+                                    Go Check
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,156 +150,112 @@
         </div>
     </div>
 
-    <!-- About Section  -->
-
-    <div class="about-section about-two section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-12 wow fadeInDown animated" data-wow-delay="200ms">
-                    <div class="about-left-wrap">
-                        <div class="section-title">
-                            <p>About Company</p>
-                            <h2>We Are The Best
-                                Solution For Your Tax
-                                Services</h2>
-                        </div>
-                        <div class="fouder-wrap light-bg-2">
-                            <div class="fouder-thumb">
-                                <img src="assets/img/about/founder-thumb.png" alt="">
-                            </div>
-                            <div class="founder-content">
-                                <div class="founder-title">
-                                    <h5>Jhon Richard, <span>Founder</span></h5>
-                                </div>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore in fugiat nulla pariatur.</p>
-                            </div>
-                        </div>
-                        <!-- <div class="about-left-img wow fadeInUp animated" data-wow-delay="400ms">
-                            <img src="assets/img/about/about-3.jpg" alt="">
-                            <a href="about.php">Discover More</a>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-12 wow fadeInRight animated" data-wow-delay="200ms">
-                    <div class="about-right-wrap">
-                        <div class="about-right-img">
-                            <img src="assets/img/about/about-4.jpg" alt="">
-                        </div>
-                        <!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority suffered alteration in some form, by injected humour, or randomised which don't look even slightly believable. </p> -->
-                        <!-- <div class="about-feature-list">
-                            <div class="row">
-                                <div class="col-md-6 col-12">
-                                    <ul>
-                                        <li><i class="las la-check-circle"></i> Best Taxation Service</li>
-                                        <li><i class="las la-check-circle"></i>Business Strategy & Growth</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <ul>
-                                        <li><i class="las la-check-circle"></i>Highly Dedicated Worker</li>
-                                        <li><i class="las la-check-circle"></i>99.9% Customer Satisfaction</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
-        <!-- Why Choose Us  -->
-        <div class="choose-us-section section-padding light-bg-1">
+    <!-- Why Choose Us  -->
+    <div class="choose-us-section section-padding light-bg-1 mt-5 mb-5">
         <div class="container">
             <div class="row">
                 <div class="offset-xl-1 col-xl-10 text-center">
                     <div class="section-title">
                         <p>WHY CHOOSE US</p>
-                        <h2>We Provide High-Quality Accounting
-                            & Tax Service</h2>
+                        <h2>Comprehensive Financial Services for Your Success</h2>
                     </div>
                 </div>
             </div>
             <div class="row mt-60">
-                <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                <div class="col-xl-4 col-lg-3 col-md-6 col-12">
                     <div class="single-feature-item mt-60">
                         <div class="feature-icon">
                             <i class="flaticon-goal"></i>
                         </div>
                         <div class="feature-title">
-                            <h4>Years Experience</h4>
+                            <a href="products.php?id=1">
+                                <h4>Mutual Fund</h4>
+                            </a>
                         </div>
                         <p class="text-black">Many desktop packages and web page editors now use Lorem</p>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                <div class="col-xl-4 col-lg-3 col-md-6 col-12">
                     <div class="single-feature-item">
                         <div class="feature-icon">
                             <i class="flaticon-group"></i>
                         </div>
                         <div class="feature-title">
-                            <h4>Expert Team</h4>
+                            <a href="products.php?id=3">
+                                <h4>Insurance</h4>
+                            </a>
                         </div>
                         <p class="text-black">Many desktop packages and web page editors now use Lorem</p>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                <div class="col-xl-4 col-lg-3 col-md-6 col-12">
                     <div class="single-feature-item mt-60">
                         <div class="feature-icon">
                             <i class="flaticon-innovation"></i>
                         </div>
                         <div class="feature-title">
-                            <h4>Worldwide Client</h4>
+                            <a href="products.php?id=4">
+                                <h4>Fixed Deposit</h4>
+                            </a>
                         </div>
                         <p class="text-black">Many desktop packages and web page editors now use Lorem</p>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-12">
-                    <div class="single-feature-item">
+            </div>
+            <div class="row mt-60">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                    <div class="single-feature-item mt-60">
                         <div class="feature-icon">
-                            <i class="flaticon-customer-service"></i>
+                            <i class="flaticon-goal"></i>
                         </div>
                         <div class="feature-title">
-                            <h4>24/7 Full Support</h4>
+                            <a href="products.php?id=5">
+                                <h4>Real Estate</h4>
+                            </a>
                         </div>
                         <p class="text-black">Many desktop packages and web page editors now use Lorem</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- CTA Section  -->
-
-    <div class="cta-area cta-three bg-cover" data-background="assets/img/cta-bg.jpg">
-        <div class="overlay"></div>
-        <div class="cta-area-inner pt-100">
-            <div class="container">
-                <div class="offset-xl-2 col-xl-6 offset-lg-1 col-lg-6 col-md-8">
-                    <div class="section-title">
-                        <p>GET STARTED</p>
-                        <h2 class="text-white">Changing Your Lives,
-                            Changing Your Futures</h2>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                    <div class="single-feature-item">
+                        <div class="feature-icon">
+                            <i class="flaticon-group"></i>
+                        </div>
+                        <div class="feature-title">
+                            <a href="products.php?id=6">
+                                <h4>NRI Corner</h4>
+                            </a>
+                        </div>
+                        <p class="text-black">Many desktop packages and web page editors now use Lorem</p>
                     </div>
-                    <a href="about.php" class="main-btn mt-20">Discover More</a>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                    <div class="single-feature-item mt-60">
+                        <div class="feature-icon">
+                            <i class="flaticon-goal"></i>
+                        </div>
+                        <div class="feature-title">
+                            <a href="products.php?id=7">
+                                <h4>NRI Taxation</h4>
+                            </a>
+                        </div>
+                        <p class="text-black">Many desktop packages and web page editors now use Lorem</p>
+                    </div>
                 </div>
 
-                <div class="offset-xl-4 col-xl-7 offset-lg-4 col-lg-7 offset-md-4 col-md-7">
-                    <p class="text-white">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words look even slightly believable. If you are going to use a passage </p>
-                </div>
             </div>
         </div>
     </div>
+
 
 
 
     <!-- Testimonial Section  -->
     <div class="testimonial-section testimonial-two green-bg section-padding pb-30">
-        <div class="row">
-            <div class="offset-xl-2 col-xl-8 text-center">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 text-center">
                 <div class="section-title">
                     <p>Testimonials</p>
                     <h2 class="text-white">A Satisfied Customer Is The Best
@@ -229,16 +265,24 @@
         </div>
         <div class="container">
             <div class="testimonial-carousel owl-carousel">
+
+
+                <?php
+                $query = mysqli_query($conn, "select * from tbl_testimonials where is_active=1");
+                $totl = mysqli_num_rows($query);
+                if ($totl > 0) {
+                    $id = 1;
+                    while ($row = mysqli_fetch_array($query)) {
+                ?>
                 <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-6.jpg" alt="">
-                    </div>
                     <div class="testimonial-content">
                         <div class="quote-sign">
                             <i class="las la-quote-left"></i>
                         </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Shawn Beltran <span>Entrepreneur</span></h5>
+                        <p class="text-black">
+                            <?= $row['testimonials_content'] ?>
+                        </p>
+                        <h5 class="testimonial-title"><?= $row['testimonials_name'] ?><span>Entrepreneur</span></h5>
                         <div class="testimonal-review-wrap">
                             <i class="las la-star"></i>
                             <i class="las la-star"></i>
@@ -247,117 +291,23 @@
                             <i class="las la-star"></i>
                         </div>
                     </div>
-
                 </div>
-                <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-7.jpg" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="quote-sign">
-                            <i class="las la-quote-left"></i>
-                        </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Jonatan Rohim <span>Designation</span></h5>
-                        <div class="testimonal-review-wrap">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                    </div>
-
+                <?php $id++;
+                    }
+                } else { ?>
+                <div>
+                    <p salign="center"></p>
                 </div>
-                <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-6.jpg" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="quote-sign">
-                            <i class="las la-quote-left"></i>
-                        </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Shawn Beltran <span>Entrepreneur</span></h5>
-                        <div class="testimonal-review-wrap">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-7.jpg" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="quote-sign">
-                            <i class="las la-quote-left"></i>
-                        </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Jonatan Rohim <span>Designation</span></h5>
-                        <div class="testimonal-review-wrap">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-6.jpg" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="quote-sign">
-                            <i class="las la-quote-left"></i>
-                        </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Shawn Beltran <span>Entrepreneur</span></h5>
-                        <div class="testimonal-review-wrap">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="single-testimonal-item">
-                    <div class="testimonial-img">
-                        <img src="assets/img/testimonial/client-7.jpg" alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="quote-sign">
-                            <i class="las la-quote-left"></i>
-                        </div>
-                        <p class="text-black">Duis aute irure dolor in voluptate velit cillum dolore eu fugiat nulla pariatur. sint occaecat cupidatat non proident, </p>
-                        <h5 class="testimonial-title">Jonatan Rohim <span>Designation</span></h5>
-                        <div class="testimonal-review-wrap">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                    </div>
-
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
 
     <style>
-        .swiper-wrapper {
+    .swiper-wrapper {
 
-            transition-timing-function: linear !important
-        }
+        transition-timing-function: linear !important
+    }
     </style>
 
     <!-- Client Area  -->
@@ -414,14 +364,14 @@
     </div>
 
     <style>
-        #cinstagram {
-            padding: 50px 0px;
-        }
+    #cinstagram {
+        padding: 50px 0px;
+    }
 
-        .footer-pad {
-            padding-top: 50px;
-            background-color: #FCF2E8;
-        }
+    .footer-pad {
+        padding-top: 50px;
+        background-color: #FCF2E8;
+    }
     </style>
 
     <!-- Contact Section  -->

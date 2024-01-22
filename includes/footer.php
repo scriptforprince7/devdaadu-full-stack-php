@@ -1,3 +1,11 @@
+<?php
+$query = mysqli_query($conn, "select * from tbl_contact where is_active=1");
+$row = mysqli_fetch_array($query);
+$contact_address  = $row['contact_address'];
+$contact_email  = $row['contact_email'];
+$contact_number  = $row['contact_number'];
+?>
+
 <div class="footer-area light-bg-1">
     <div class="container">
         <div class="row">
@@ -6,16 +14,9 @@
                     <div class="logo">
                         <a class="navbar-brand" href="index.php"><img src="assets/img/logo.png" alt=""></a>
                     </div>
-                    <p class="company-desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit minus id quod maxime placeat facere assumenda est omnis dolor repellendus.</p>
-                    <!-- <div class="support-info">
-                        <div class="support-icon">
-                            <i class="las la-phone-volume"></i>
-                        </div>
-                        <div class="support-content">
-                            <h6>Free Support</h6>
-                            <p>0524 6230 2528</p>
-                        </div>
-                    </div> -->
+                    <p class="company-desc">We are DEV DAADU INVESTMENT & INSURANCE CONSULTANTS , we make “Investment” a
+                        wise choice by efficient “Tax planning” and building a “Portfolio”, which fulfils your financial
+                        goals.</p>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-4 col-12 wow fadeInUp animated" data-wow-delay="200ms">
@@ -23,18 +24,25 @@
                     <div class="services-list">
                         <h5>Our Services</h5>
                         <ul>
-                            <li><i class="las la-check-circle"></i><a href="#">Financial Planning</a></li>
+
+                            <?php
+                            $query = mysqli_query($conn, "select * from tbl_service where is_active=1");
+                            $totl = mysqli_num_rows($query);
+                            if ($totl > 0) {
+                                $id = 1;
+                                while ($row = mysqli_fetch_array($query)) {
+                            ?>
+                            <li><i class="las la-check-circle"></i><a
+                                    href="service-page.php?id=<?= $row['service_id'] ?>"><?= $row['service_name'] ?></a>
                             </li>
-                            <li><i class="las la-check-circle"></i><a href="#">Tax Planning</a></li>
-                            </li>
-                            <li><i class="las la-check-circle"></i><a href="#">Wealth Planning</a></li>
-                            </li>
-                            <li><i class="las la-check-circle"></i><a href="#">Child Future Planning</a></li>
-                            </li>
-                            <li><i class="las la-check-circle"></i><a href="#">Retirement Planning</a></li>
-                            </li>
-                            <li><i class="las la-check-circle"></i><a href="#">Loans</a></li>
-                            </li>
+
+                            <?php $id++;
+                                }
+                            } else { ?>
+                            <div>
+                                <p salign="center">No record found</p>
+                            </div>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -44,11 +52,24 @@
                     <div class="services-list">
                         <h5>Our Products</h5>
                         <ul>
-                            <li><i class="las la-check-circle"></i><a href="#">Mutual Fund</a></li>
-                            <li><i class="las la-check-circle"></i><a href="#">Insurance</a></li>
-                            <li><i class="las la-check-circle"></i><a href="#">Fixed Deposit</a></li>
-                            <li><i class="las la-check-circle"></i><a href="#">Real Estate</a></li>
-                            <li><i class="las la-check-circle"></i><a href="#">NRI</a></li>
+                            <?php
+                            $query = mysqli_query($conn, "select * from tbl_products where is_active=1");
+                            $totl = mysqli_num_rows($query);
+                            if ($totl > 0) {
+                                $id = 1;
+                                while ($row = mysqli_fetch_array($query)) {
+                            ?>
+                            <li><i class="las la-check-circle"></i><a
+                                    href="products.php?id=<?= $row['products_id'] ?>"><?= $row['products_name'] ?></a>
+                            </li>
+
+                            <?php $id++;
+                                }
+                            } else { ?>
+                            <div>
+                                <p salign="center">No record found</p>
+                            </div>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -58,9 +79,9 @@
                     <div class="services-list">
                         <h5>Our Services</h5>
                         <ul>
-                            <li><i class="las la-check-circle"></i> <a href="cases.php">Financial Health Check</a> </li>
-                            <li><i class="las la-check-circle"></i> <a href="cases.php">Financial Fact Finder</a> </li>
-                            <li><i class="las la-check-circle"></i> <a href="cases.php">Goal Based Planning</a> </li>
+                            <li><i class="las la-check-circle"></i> <a href="">Financial Health Check</a> </li>
+                            <li><i class="las la-check-circle"></i> <a href="">Financial Fact Finder</a> </li>
+                            <li><i class="las la-check-circle"></i> <a href="">Goal Based Planning</a> </li>
                         </ul>
                     </div>
                     <br>
@@ -70,7 +91,7 @@
                         </div>
                         <div class="support-content">
                             <h6>Free Support</h6>
-                            <p>0524 6230 2528</p>
+                            <p><?= $contact_number ?></p>
                         </div>
                     </div>
                 </div>
@@ -78,13 +99,8 @@
         </div>
         <div class="row">
             <div class="col-xl-12 text-center">
-                <!-- <div class="founder-year-wrap wow fadeInUp animated" data-wow-delay="300ms">
-                    <span>since 1990</span>
-                </div> -->
                 <div class="footer-navbar">
-                    <p>
-                        30 Broklyn Street. New York
-                    </p>
+
                 </div>
             </div>
         </div>
@@ -104,31 +120,31 @@
     </svg>
 </div>
 <div class="appointment-btn">
-    <a href="" class="btn my-btn">
+    <a href="contact.php" class="btn my-btn">
         Get Appointment
     </a>
 </div>
 
 <div class="whatsapp-footer">
-    <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/+919896570700"><i class="fab fa-whatsapp"></i></a>
 </div>
 
 <style>
-    .whatsapp-footer {
-        position: fixed;
-        bottom: 140px;
-        right: 5px;
-        background-color: #25d366;
-        border-radius: 50%;
-        width: 50px;
-        z-index: 99999;
-        height: 50px;
-    }
+.whatsapp-footer {
+    position: fixed;
+    bottom: 140px;
+    right: 5px;
+    background-color: #25d366;
+    border-radius: 50%;
+    width: 50px;
+    z-index: 99999;
+    height: 50px;
+}
 
-    .whatsapp-footer i {
-        /* color: #25d366; */
-        color: white;
-        font-size: 40px;
-        padding: 5px 8px;
-    }
+.whatsapp-footer i {
+    /* color: #25d366; */
+    color: white;
+    font-size: 40px;
+    padding: 5px 8px;
+}
 </style>

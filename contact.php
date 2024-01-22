@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
-    <title>Taxvi | Tax Advisor & Financial Consulting HTML Template</title>
+    <title>Contact Us | Dev Daadu</title>
     <?php include 'includes/head.php' ?>
 
 </head>
@@ -44,7 +44,8 @@
                                 <input type="text" placeholder="Name">
                                 <input type="tel" placeholder="Phone">
                                 <input type="email" placeholder="E-mail">
-                                <textarea name="message" id="message" cols="30" rows="10" placeholder="Your Message"></textarea>
+                                <textarea name="message" id="message" cols="30" rows="10"
+                                    placeholder="Your Message"></textarea>
                                 <input type="submit" value="Send A Message">
                             </form>
                         </div>
@@ -56,15 +57,27 @@
                                 <h2>Have Questions?
                                     Get in Touch!</h2>
                             </div>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit fugit, sed quia consequuntur magni dolores eos qui ratione</p>
+                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit fugit, sed quia
+                                consequuntur magni dolores eos qui ratione</p>
                             <div class="contact-details">
+
+                                <?php
+                                $query = mysqli_query($conn, "select * from tbl_contact where is_active=1");
+                                $totl = mysqli_num_rows($query);
+                                ?>
+                                <?php
+                                if ($totl > 0) {
+                                    $id = 1;
+                                    while ($row = mysqli_fetch_array($query)) {
+                                ?>
+
                                 <div class="single-contact-info">
                                     <div class="contact-icon">
                                         <i class="las la-phone-volume"></i>
                                     </div>
                                     <div class="contact-info">
                                         <p>Have any question?</p>
-                                        <h5>Free +88 (7900) 3322</h5>
+                                        <h5><?=$row['contact_number']?></h5>
                                     </div>
                                 </div>
                                 <div class="single-contact-info">
@@ -73,7 +86,7 @@
                                     </div>
                                     <div class="contact-info">
                                         <p>Write email</p>
-                                        <h5>contact@gmail.com</h5>
+                                        <h5><?=$row['contact_email']?></h5>
                                     </div>
                                 </div>
                                 <div class="single-contact-info">
@@ -82,9 +95,18 @@
                                     </div>
                                     <div class="contact-info">
                                         <p>Visit anytime</p>
-                                        <h5>30 Broklyn Street. New York</h5>
+                                        <h5><?=$row['contact_address']?></h5>
                                     </div>
                                 </div>
+
+                                <?php $id++;
+                                    }
+                                } else { ?>
+                                <div>
+                                    <p salign="center"></p>
+                                </div>
+                                <?php } ?>
+
                             </div>
                         </div>
                     </div>
@@ -95,7 +117,10 @@
 
     <!-- Google Map Start-->
     <div class="contact-page google-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3690.404245521138!2d91.80989606467384!3d22.338360085303748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdewanhat%20near%20Chattogram!5e0!3m2!1sen!2sbd!4v1677069314806!5m2!1sen!2sbd" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3690.404245521138!2d91.80989606467384!3d22.338360085303748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdewanhat%20near%20Chattogram!5e0!3m2!1sen!2sbd!4v1677069314806!5m2!1sen!2sbd"
+            width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
 

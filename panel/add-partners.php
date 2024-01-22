@@ -2,15 +2,16 @@
 include('db/config.php');
 include('lock2.php');
 if (isset($_POST['launch'])) {
-	$sm_name = $_POST['sm_name'];
-	$sm_link = $_POST['sm_link'];
+	$partner_desc = $_POST['partner_desc'];
+	$partner_img = 'partner_img' . rand(0, 1000) . '_' . $_FILES['partner_img']['name'];
 	$is_active = ($_POST['is_active'] != '' ? 1 : 2);
-	$query = mysqli_query($conn, "insert into tbl_sm
-    	                                             SET sm_name='$sm_name',
-														 sm_link='$sm_link',
+	$query = mysqli_query($conn, "insert into tbl_partners
+    	                                             SET partner_desc='$partner_desc',
+														 partner_img='$partner_img',
                                                          is_active='$is_active'");
 	if ($query) {
-		header('Location:manage-social-media.php');
+		move_uploaded_file($_FILES['partner_img']['tmp_name'], 'assets/img/' . $partner_img . '');
+		header('Location:manage-partners.php');
 	}
 }
 ?>
@@ -75,18 +76,17 @@ if (isset($_POST['launch'])) {
                                         <!--begin::Heading-->
                                         <div class="card-px text-center pt-20 pb-5">
                                             <!--begin::Title-->
-                                            <h2 class="fs-2x fw-bolder mb-0">Add New Social Media</h2>
+                                            <h2 class="fs-2x fw-bolder mb-0">Add New Partner</h2>
                                             <!--end::Title-->
                                             <!--begin::Description-->
                                             <p class="text-gray-400 fs-4 fw-bold py-7">Click on the below button to
                                                 launch
-                                                <br />a new social media. <a href="manage-social-media.php"><b>Go
-                                                        back</b></a>
+                                                <br />a new product. <a href="manage-partners.php"><b>Go back</b></a>
                                             </p>
                                             <!--end::Description-->
                                             <!--begin::Action-->
                                             <a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal"
-                                                data-bs-target="#kt_modal_new_target">Launch New Social Media Link</a>
+                                                data-bs-target="#kt_modal_new_target">Add New Partner</a>
                                             <!--end::Action-->
                                         </div>
                                         <!--end::Heading-->
@@ -134,46 +134,39 @@ if (isset($_POST['launch'])) {
                                                     <!--begin::Heading-->
                                                     <div class="mb-13 text-center">
                                                         <!--begin::Title-->
-                                                        <h1 class="mb-3">Add New Social Media</h1>
+                                                        <h1 class="mb-3">Add New Partner</h1>
                                                         <!--end::Title-->
                                                         <!--begin::Description-->
-                                                        <div class="text-muted fw-bold fs-5">To see all social media,
-                                                            please
+                                                        <div class="text-muted fw-bold fs-5">To see all products, please
                                                             check
-                                                            <a href="manage-social-media.php"
-                                                                class="fw-bolder link-primary">Manage Social Media</a>.
+                                                            <a href="manage-partners.php"
+                                                                class="fw-bolder link-primary">Manage Partners</a>.
                                                         </div>
                                                         <!--end::Description-->
                                                     </div>
                                                     <!--end::Heading-->
                                                     <!--begin::Input group-->
-                                                    <div class="d-flex flex-column mb-8 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                                                            <span class="required">Social Media Name</span>
-                                                            <i class="fas fa-exclamation-circle ms-2 fs-7"
-                                                                data-bs-toggle="tooltip"
-                                                                title="Specify a target name for future usage and reference"></i>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input type="text" class="form-control form-control-solid"
-                                                            placeholder="Enter Social Media Name" name="sm_name" />
-                                                    </div>
 
-                                                    <!--end::Input group-->
-                                                    <div class="d-flex flex-column mb-8 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                                                            <span class="required">Social Media Link</span>
-                                                            <i class="fas fa-exclamation-circle ms-2 fs-7"
-                                                                data-bs-toggle="tooltip"
-                                                                title="Specify a target name for future usage and reference"></i>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input type="text" class="form-control form-control-solid"
-                                                            placeholder="Enter slug for URL" name="sm_link" />
+                                                    <div class="row g-9 mb-8">
+                                                        <div class="col-md-6 fv-row">
+                                                            <label class="required fs-6 fw-bold mb-2">Partners Banner
+                                                                Image</label>
+                                                            <input type="file" class="form-control" name="partner_img">
+                                                        </div>
+
+
+
+                                                        <!--end::Col-->
                                                     </div>
+                                                    <!--end::Input group-->
+
                                                     <!--begin::Input group-->
+                                                    <div class="d-flex flex-column mb-8">
+                                                        <label class="fs-6 fw-bold mb-2">Partners Page Content</label>
+                                                        <textarea class="form-control form-control-solid" id="editor"
+                                                            name="partner_desc"
+                                                            placeholder="Type Product Description"></textarea>
+                                                    </div>
                                                     <div class="d-flex flex-stack mb-8">
                                                         <div class="me-5">
                                                             <label class="fs-6 fw-bold">Status</label>
@@ -200,7 +193,7 @@ if (isset($_POST['launch'])) {
                                                             class="btn btn-light me-3">Cancel</button>
                                                         <button type="submit" name="launch" id="kt_modal"
                                                             class="btn btn-primary">
-                                                            <span class="indicator-label">Add Social Media</span>
+                                                            <span class="indicator-label">Add Partners</span>
                                                             </span>
                                                         </button>
                                                     </div>

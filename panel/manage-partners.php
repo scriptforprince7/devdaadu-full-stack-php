@@ -3,9 +3,9 @@ include 'db/config.php';
 include('lock2.php');
 if (isset($_GET['del'])) {
 	$t_id = $_GET['del'];
-	$query = mysqli_query($conn, "delete from tbl_products where products_id=$t_id");
+	$query = mysqli_query($conn, "delete from tbl_partners where slider_id=$t_id");
 	if ($query) {
-		header('Location:' . BASE_URL . 'manage-products.php');
+		header('Location:' . BASE_URL . 'manage-partners.php');
 	}
 }
 
@@ -83,9 +83,9 @@ if (isset($_GET['del'])) {
                                         <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
 
                                             <!--begin::Add customer-->
-                                            <a href="add-products.php"><button type="button" class="btn btn-primary"
+                                            <a href="add-partners.php"><button type="button" class="btn btn-primary"
                                                     data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add
-                                                    New Product</button></a>
+                                                    New Partner</button></a>
                                             <!--end::Add customer-->
                                         </div>
                                         <!--end::Toolbar-->
@@ -114,21 +114,20 @@ if (isset($_GET['del'])) {
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                                 <th class="min-w-125px">ID</th>
-                                                <th class="min-w-125px">Product Name</th>
-                                                <th class="min-w-125px">Product Description</th>
-                                                <th class="min-w-125px">Banner Image</th>
-                                                <th class="min-w-125px">Middle Image</th>
-                                                <th class="min-w-125px">URL Slug</th>
+                                                <th class="min-w-125px">Partners Banner Image</th>
+                                                <th class="min-w-125px">Partners Page Content</th>
                                                 <th class="min-w-125px">Status</th>
                                                 <th class="text-end min-w-70px">Actions</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
                                         <!--end::Table head-->
+                                        <!-- is_active	 -->
+
                                         <!--begin::Table body-->
                                         <tbody class="fw-bold text-gray-600">
                                             <?php
-											$query = mysqli_query($conn, "select * from tbl_products order by products_id asc");
+											$query = mysqli_query($conn, "select * from tbl_partners order by partner_id asc");
 											$totl = mysqli_num_rows($query);
 											if ($totl > 0) {
 												$id = 1;
@@ -136,30 +135,17 @@ if (isset($_GET['del'])) {
 											?>
                                             <tr>
                                                 <td>
-                                                    <?= $row['products_id'] ?>
+                                                    <?= $row['partner_id'] ?>
                                                 </td>
 
                                                 <td>
-                                                    <?= $row['products_name'] ?>
-                                                </td>
-
-                                                <td>
-                                                    <?= $row['products_desc'] ?>
-                                                </td>
-
-                                                <td>
-                                                    <img src="<?= BASE_URL . 'assets/img/' . $row['products_banner_img'] . '' ?>"
+                                                    <img src="<?= BASE_URL . 'assets/img/' . $row['partner_img'] . '' ?>"
                                                         width="100">
                                                 </td>
-
                                                 <td>
-                                                    <img src="<?= BASE_URL . 'assets/img/' . $row['products_bottom_img'] . '' ?>"
-                                                        width="100">
+                                                    <?= $row['partner_desc'] ?>
                                                 </td>
 
-                                                <td>
-                                                    <?= $row['products_slug'] ?>
-                                                </td>
 
                                                 <td>
                                                     <span class="label label-lg font-weight-bold label-inline"
@@ -191,13 +177,13 @@ if (isset($_GET['del'])) {
                                                         data-kt-menu="true">
                                                         <!--begin::Menu item-->
                                                         <div class="menu-item px-3">
-                                                            <a href="<?= BASE_URL ?>edit-products.php?edit_rec=<?= $row['products_id'] ?>"
+                                                            <a href="<?= BASE_URL ?>edit-partners.php?edit_rec=<?= $row['partner_id'] ?>"
                                                                 class="menu-link px-3"> Edit </a>
                                                         </div>
                                                         <!--end::Menu item-->
                                                         <!--begin::Menu item-->
                                                         <div class="menu-item px-3">
-                                                            <a href="<?= BASE_URL ?>manage-products.php?del=<?= $row['products_id'] ?>"
+                                                            <a href="<?= BASE_URL ?>manage-partners.php?del=<?= $row['partner_id'] ?>"
                                                                 class="menu-link px-3"
                                                                 data-kt-customer-table-filter="delete_row">Delete</a>
                                                         </div>
@@ -456,13 +442,13 @@ if (isset($_GET['del'])) {
                             data-kt-menu="true">
                             <!--begin::Heading-->
                             <div class="menu-item px-3">
-                                <div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Contacts</div>
+                                <div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Slider</div>
                             </div>
                             <!--end::Heading-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-3">
                                 <a href="#" class="menu-link px-3" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_users_search">Add Contact</a>
+                                    data-bs-target="#kt_modal_users_search">Add Partner</a>
                             </div>
                             <!--end::Menu item-->
                             <!--begin::Menu item-->
