@@ -10,8 +10,7 @@ include './lock2.php';
 <!--begin::Head-->
 
 <head>
-    <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel
-        by Keenthemes</title>
+    <title>Admin Panel | Dev Daadu.com | Manage Everything with only one click</title>
     <meta name="description"
         content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
     <meta name="keywords"
@@ -170,7 +169,7 @@ include './lock2.php';
                                                     class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
                                                     <div class="d-flex justify-content-between w-100 mt-auto mb-2">
                                                         <span class="fw-bold fs-6 text-gray-400">Profile
-                                                            Compleation</span>
+                                                            Completion</span>
                                                         <span class="fw-bolder fs-6">80%</span>
                                                     </div>
                                                     <div class="h-5px mx-3 w-100 bg-light mb-3">
@@ -199,8 +198,7 @@ include './lock2.php';
                                     </div>
                                     <!--end::Card title-->
                                     <!--begin::Action-->
-                                    <a href="" class="btn btn-primary align-self-center">Edit
-                                        Profile</a>
+
                                     <!--end::Action-->
                                 </div>
                                 <!--begin::Card header-->

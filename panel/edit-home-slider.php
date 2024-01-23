@@ -39,8 +39,7 @@ $row = mysqli_fetch_array(mysqli_query($conn, "select * from tbl_slider where sl
 
 <head>
     <base href="../../">
-    <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel
-        by Keenthemes</title>
+    <title>Admin Panel | Dev Daadu.com | Manage Everything with only one click</title>
     <meta name="description"
         content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
     <meta name="keywords"
